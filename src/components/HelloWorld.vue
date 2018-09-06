@@ -1,26 +1,56 @@
 <template>
-  <div>
-    <h1>Title<span v-if="isTyping"> หิวมาก</span></h1>
-    <p>Description</p>
-    <input v-model="cooltext"/>
-    <p class="cool" v-bind:style="{ 'color' : color }">{{ cooltext }}</p>
-    <div class="อาหารBox">
-      <div class="อาหาร" v-for="food in myFavoriteFood">{{ food }}</div>
-    </div>
-    <button @click="changeColor">เปลี่ยนสีหน่อย</button>
-  </div>
+	<div>
+		<nav>
+			<div class="container row">
+				<div class="col">
+					<h2 class="logo">Thinc.</h2>
+				</div>
+				<div class="col">
+					<ul>
+						<li><a>Home</a></li>
+						<li><a>Shop</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<main class="container">
+			<div class="row">
+				<div class="col">
+					<img 
+            class="prod-image" 
+            v-bind:src="require('../assets/' + activeImage + '.png')"
+          />
+          <div class="prod-gallery">
+            <img class="prod-gallery-image" src="../assets/art1.png" @click="changeImage('art1')"/>
+            <img class="prod-gallery-image" src="../assets/art2.png" @click="changeImage('art2')"/>
+          </div>
+				</div>
+				<div class="col prod-detail">
+					<div class="prod-info">
+						<h1 class="prod-title">Title</h1>
+						<h3 class="price">${{ (price).toFixed(2) }}</h3>
+						<p class="prod-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+					</div>
+					<div class="prod-control row">
+						<div class="button-group col">
+							<button @click="quantity -= 1" :disabled="quantity == 1">-</button>
+							<div class="text-display">{{ quantity }}</div>
+							<button @click="quantity += 1">+</button>
+						</div>
+						<div class="prod-summary col row">
+							<span>
+								Total: <h3>${{ (price * quantity).toFixed(2) }}</h3>
+							</span>
+							<button>Add to Cart</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
 </template>
 
 <script>
-function getRandomColor() {
-  var letters = "0123456789ABCDEF";
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 export default {
   name: "HelloWorld",
   props: {
@@ -28,60 +58,77 @@ export default {
   },
   data() {
     return {
-      cooltext: "",
-      color: "#000",
-      myFavoriteFood: ["pizza", "เหนี่ยวไก่", "อะไรก็ได้อร่อยๆ"]
+      quantity: 1,
+      price: 5.0,
+      activeImage: "art1"
     };
   },
   methods: {
-    changeColor() {
-      this.color = getRandomColor();
-      this.myFavoriteFood.push(this.cooltext);
-      this.cooltext = "";
+    changeImage(name) {
+      this.activeImage = name;
     }
   },
-  computed: {
-    isTyping() {
-      return this.cooltext !== "";
-    }
-  }
+  computed: {}
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.อาหาร {
+.prod-image {
+  background-color: #eee;
+  /* padding-bottom: 100%; */
+  width: 400px;
 }
-.อาหารBox {
+.prod-gallery {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  margin-top: 15px;
 }
-* {
-  font-family: sans-serif;
+.prod-gallery:last-child {
+  margin-right: 0;
 }
-h3 {
-  margin: 40px 0 0;
+.prod-gallery-image {
+  background-color: #eee;
+  box-sizing: border-box;
+  height: 100px;
+  margin-right: 15px;
+  width: 100px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.prod-gallery-image:hover {
+  outline-style: solid;
+  outline-color: #fedc36;
 }
-li {
+.prod-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20px;
+  width: 100%;
+}
+
+.price {
+  background-color: #e36464;
+  color: white;
   display: inline-block;
-  margin: 0 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 7px 15px;
 }
-a {
-  color: #42b983;
+
+.prod-description {
+  font-size: 17px;
 }
-.cool {
-  transition: all 1s ease;
-  font-size: 7em;
-  color: purple;
+
+.prod-control {
+  border-top: solid 4px #fedc36;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 20px;
 }
-.cool:hover {
-  text-shadow: 10px 10px 10px black;
-  text-shadow: 5px 5px 5px red;
-  transform: translate(-10px, -10px);
+.prod-summary {
+  align-self: flex-end;
+}
+.prod-summary span {
+  margin-right: 20px;
 }
 </style>
