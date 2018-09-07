@@ -7,17 +7,9 @@
       v-if="showModal"
       @close="showModal = false"/>
 		<nav>
-			<div class="container row">
-				<div class="col">
-					<h2 class="logo">Thinc.</h2>
-				</div>
-				<div class="col">
-					<ul>
-						<li><a>Home</a></li>
-						<li><a>Shop</a></li>
-					</ul>
-				</div>
-			</div>
+      <div class="container">
+        <h2 class="logo">Thinc.</h2>
+      </div>
 		</nav>
 		<main class="container">
 			<div class="row">
