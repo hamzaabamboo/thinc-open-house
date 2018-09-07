@@ -60,7 +60,6 @@ nav {
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   height: 60px;
-  /* padding: 20px 0; */
   position: fixed;
   top: 0;
   width: 100vw;
@@ -94,7 +93,6 @@ nav ul li a:hover {
 button {
   background-color: #e36464;
   border: none;
-  /* border-radius: 4px; */
   box-shadow: none;
   color: white;
   font-weight: bold;
@@ -121,9 +119,3 @@ button:disabled {
   font-weight: bold;
   padding: 0 15px;
 }
-/* .button-group :first-child {
-  border-radius: 4px 0 0 4px;
-}
-.button-group :last-child {
-  border-radius: 0 4px 4px 0;
-} */

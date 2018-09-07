@@ -1,6 +1,11 @@
 <template>
 	<div>
-    <Modal/>
+    <Modal 
+      v-bind:itemName="itemName" 
+      v-bind:quantity="quantity" 
+      v-bind:active="showModal" 
+      v-if="showModal"
+      @close="showModal = false"/>
 		<nav>
 			<div class="container row">
 				<div class="col">
@@ -28,7 +33,7 @@
 				</div>
 				<div class="col prod-detail">
 					<div class="prod-info">
-						<h1 class="prod-title">Title</h1>
+						<h1 class="prod-title">{{ itemName }}</h1>
 						<h3 class="price">${{ (price).toFixed(2) }}</h3>
 						<p class="prod-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 					</div>
@@ -42,7 +47,7 @@
 							<span>
 								Total: <h3>${{ (price * quantity).toFixed(2) }}</h3>
 							</span>
-							<button>Add to Cart</button>
+							<button @click="showModal = true">Add to Cart</button>
 						</div>
 					</div>
 				</div>
@@ -61,9 +66,11 @@ export default {
   },
   data() {
     return {
+      itemName: "Title",
       quantity: 1,
       price: 5.0,
-      activeImage: "art1"
+      activeImage: "art1",
+      showModal: false
     };
   },
   methods: {
@@ -79,7 +86,6 @@ export default {
 <style scoped>
 .prod-image {
   background-color: #eee;
-  /* padding-bottom: 100%; */
   width: 400px;
 }
 .prod-gallery {
@@ -97,8 +103,8 @@ export default {
   width: 100px;
 }
 .prod-gallery-image:hover {
-  outline-style: solid;
   outline-color: #fedc36;
+  outline-style: solid;
 }
 .prod-detail {
   display: flex;
