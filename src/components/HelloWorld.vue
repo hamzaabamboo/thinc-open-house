@@ -27,21 +27,21 @@
 				</div>
 				<div class="col prod-detail">
 					<div class="prod-info">
-						<h1 class="prod-title">Title</h1>
-						<h3 class="price">${{ (price).toFixed(2) }}</h3>
 						<p class="prod-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+						<h3 class="price">${{ (price).toFixed(2) }}</h3>
+						<h1 class="prod-title">Title</h1>
 					</div>
 					<div class="prod-control row">
-						<div class="button-group col">
-							<button @click="quantity -= 1" :disabled="quantity == 1">-</button>
-							<div class="text-display">{{ quantity }}</div>
-							<button @click="quantity += 1">+</button>
-						</div>
 						<div class="prod-summary col row">
 							<span>
 								Total: <h3>${{ (price * quantity).toFixed(2) }}</h3>
 							</span>
 							<button>Add to Cart</button>
+						</div>
+						<div class="button-group col">
+							<button @click="quantity -= 1" :disabled="quantity == 1">-</button>
+							<div class="text-display">{{ quantity }}</div>
+							<button @click="quantity += 1">+</button>
 						</div>
 					</div>
 				</div>
