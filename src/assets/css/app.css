@@ -1,3 +1,10 @@
+::selection {
+  background: rgba(227, 100, 100, 0.3);
+}
+::-moz-selection {
+  background: rgba(227, 100, 100, 0.3);
+}
+
 /* Row/Col */
 .row {
   display: flex;
