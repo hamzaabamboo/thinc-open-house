@@ -134,7 +134,7 @@ CSS is actually a big field in web development and they are many things to explo
 
 ## Part 3 : Let's finish this up with interactivity
 
-Interactivity of the website are all controlled by `JavaScript`. In vue, almost everything is Javascript. 
+Interactivity of the website are all done by `JavaScript`. In vue, almost everything is Javascript. It's very easy to make interactivity on the web with vue.
 
 Assuming you know some basics of Javascript (variables, functions, if/else, for/while, object) lets get started !
 
@@ -152,7 +152,7 @@ The html tag for the button is as follows
 <button @click="quantity += 1">+</button>
 ```
 
-It turns out that `@click` is a special for attribute for vue, it could be a short function (like this) or a method inside `methods`
+It turns out that `@click` is a special for attribute for vue, You can put a short function (like this) or a method inside `methods` and it will be called once the button is clicked.
 
 Data part of this file :
 
