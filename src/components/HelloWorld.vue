@@ -1,5 +1,6 @@
 <template>
 	<div>
+    <Modal/>
 		<nav>
 			<div class="container row">
 				<div class="col">
@@ -51,10 +52,12 @@
 </template>
 
 <script>
+import Modal from "./Modal.vue";
+
 export default {
   name: "HelloWorld",
-  props: {
-    msg: String
+  components: {
+    Modal
   },
   data() {
     return {
