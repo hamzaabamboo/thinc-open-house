@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "presentation": "mdx-deck presentation.mdx -p 8081"
+    "presentation": "mdx-deck presentation.mdx -p 8081",
+    "make-presentation": "mdx-deck build presentation.mdx -d presentation"
   },
   "dependencies": {
     "normalize": "^0.3.1",
