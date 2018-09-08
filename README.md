@@ -22,7 +22,7 @@ Vue is a very good modern framework for beginners. It has a very low learning cu
 
 ## Setting it up
 
-before you do anything you need to have `node` version 6.0+ installed !
+before you do anything you need to have [`node`](https://nodejs.org) version 6.0+ installed !
 
 To set this project up first you have to clone this project (or download from github)
 
@@ -46,7 +46,7 @@ Now, once you got everything setted up, Let's get started !!!
 
 # Activity
 
-We'll be working on a shop item listing and learn all the basic concepts of the web ! Try ignore everthing else and focus on the basics !
+We'll be fixing a shop item listing and learn all the basic concepts of the web ! Try ignore everthing else and focus on the basics ! 
 
 ## Part 1 : Let's understand this page layout
 
@@ -57,7 +57,7 @@ First, Let's go to [HelloWorld.vue](./src/components/HelloWorld.vue)
 HTML is a markup language used to label various parts of you website. Its format is like this
 
 ```html
-<tag arribute="value">Content</tag>
+<tag attribute="value">Content</tag>
 ```
 
 You can nest HTML tags however you like. Think of it as boxes and box in a box !  
@@ -145,8 +145,19 @@ We'll focus on `data()` and `methods` part of this file.
 You can think of `data()` as variables you can put into HTML content or use it in javascript, it could be dynamic content.  
 Also, you can think of `methods` as functions you can perform which may change these variables.
 
-If you try click add (+) button, you can see number and the price going up!
-The html tag for the button is as follows
+Let's see the quantity selection part of this page  
+
+```html
+<div class="button-group col">
+    <button @click="quantity -= 1">-</button>
+    <div class="text-display">{{ quantity }}</div>
+    <button @click="quantity += 1">+</button>
+</div>
+```
+
+If you try click add (+) button, you can see the quantity going up
+
+We'll try to understand how it works. Let's start with The button
 
 ```html
 <button @click="quantity += 1">+</button>
@@ -159,14 +170,24 @@ Data part of this file :
 ```js
 data() {
     return {
-        quantity: 1,
-        price: 5.0,
-        activeImage: "art1"
+      quantity: 0
+      // ...everything else
     };
-}
+  },
 ```
 
-As you can see, you can put what ever you like as a key-value pair sperated by commas.  
+As you can see, the quantity is defined here, you can also add more variable too.
+
+Next we'll lokk at the part we show the quantity on the page.
+
+```html
+<div class="text-display">{{ quantity }}</div>
+```
+
+We used double curly braces to interpolate (put) the variable inside html content !
+
+These variables are reactive, which means that when its value is changed, Every place that used the variable changes too !
+
 To change value inside `methods` you can do like this
 
 ```js
@@ -178,16 +199,15 @@ methods: {
 ```
 
 We use keyword `this` in front of the variable name to indicated that it's a class variable.  
-These variables are reactive, which means that when its value is changed, Every place that used the variable changes too !
-To put this `data()` inside html template you can use double curly braces and put the variable inside
 
-```html
-<h1>{{ title }}</h1>
-```
+Your activity is to:
 
-You activity is to make the Add-to-Cart button do something.  
-Some suggestion are confirmation modal or do something crazy like breaking the web. Let your imagination go wild !  
-You can ask seniors for guidance too if don't know how to do.
+1. add the missing price and total amount.
+2. Make the Add-to-cart button change the value of `showModal` to open the confirm dialog. 
+3. Open [Modal.vue](./src/components/Modal.vue) and work with vue's `props`.
+
+Most of the instructions are already in the file. Good Luck !  
+If you happend to get stuck, try ask seniors around you !
 
 # Ending notes
 
