@@ -1,3 +1,10 @@
+::selection {
+  background: rgba(64, 78, 90, 0.2);
+}
+::-moz-selection {
+  background: rgba(64, 78, 90, 0.2);
+}
+
 /* Row/Col */
 .row {
   display: flex;
@@ -60,15 +67,11 @@ nav {
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   height: 60px;
-  /* padding: 20px 0; */
   position: fixed;
   top: 0;
   width: 100vw;
 }
 nav .container {
-  align-items: stretch;
-  display: flex;
-  justify-content: space-between;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -94,7 +97,6 @@ nav ul li a:hover {
 button {
   background-color: #e36464;
   border: none;
-  /* border-radius: 4px; */
   box-shadow: none;
   color: white;
   font-weight: bold;
@@ -121,9 +123,3 @@ button:disabled {
   font-weight: bold;
   padding: 0 15px;
 }
-/* .button-group :first-child {
-  border-radius: 4px 0 0 4px;
-}
-.button-group :last-child {
-  border-radius: 0 4px 4px 0;
-} */

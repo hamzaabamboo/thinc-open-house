@@ -1,47 +1,60 @@
 <template>
 	<div>
+    <!--  
+      Pass itemName and quantity to Modal component below
+      Example: v-bind:itemName="itemName"
+    -->
+    <Modal
+      v-bind:active="showModal" 
+      v-if="showModal"
+      @close="showModal = false"
+    />
+
 		<nav>
-			<div class="container row">
-				<div class="col">
-					<h2 class="logo">Thinc.</h2>
-				</div>
-				<div class="col">
-					<ul>
-						<li><a>Home</a></li>
-						<li><a>Shop</a></li>
-					</ul>
-				</div>
-			</div>
+      <div class="container">
+        <h2 class="logo">Thinc.</h2>
+      </div>
 		</nav>
 		<main class="container">
 			<div class="row">
 				<div class="col">
-					<img 
-            class="prod-image" 
-            v-bind:src="require('../assets/' + activeImage + '.png')"
-          />
+          <img class="prod-image" v-bind:src="require('../assets/' + activeImage + '.png')"/>
+
           <div class="prod-gallery">
-            <img class="prod-gallery-image" src="../assets/art1.png" @click="changeImage('art1')"/>
-            <img class="prod-gallery-image" src="../assets/art2.png" @click="changeImage('art2')"/>
+            <!-- Make the images change activeImage when clicked using @click -->
+            <!-- The image names are 'art1' and 'art2' -->
+            <img class="prod-gallery-image" src="../assets/art1.png"/>
+            <img class="prod-gallery-image" src="../assets/art2.png"/>
           </div>
+
 				</div>
 				<div class="col prod-detail">
 					<div class="prod-info">
+            <!-- Try rearranging elements -->
+						<h3 class="price">$<!-- Display price here --></h3>
 						<p class="prod-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-						<h3 class="price">${{ (price).toFixed(2) }}</h3>
-						<h1 class="prod-title">Title</h1>
+						<h1 class="prod-title">{{ itemName }}</h1>
 					</div>
 					<div class="prod-control row">
+            <!-- Try rearranging elements -->
 						<div class="prod-summary col row">
 							<span>
-								Total: <h3>${{ (price * quantity).toFixed(2) }}</h3>
+								Total: <h3>$<!-- Show total price here. HINT: The total is equal to quantity * price --></h3>
 							</span>
-							<button>Add to Cart</button>
+
+							<!-- 
+                Make the button below show the modal on click.
+              -->
+              <button>Add to Cart</button>
+
 						</div>
 						<div class="button-group col">
-							<button @click="quantity -= 1" :disabled="quantity == 1">-</button>
-							<div class="text-display">{{ quantity }}</div>
-							<button @click="quantity += 1">+</button>
+              <button @click="quantity -= 1">-</button>
+
+              <div class="text-display"><!-- Display Quantity Here --></div>
+
+              <!-- Make this button increase the quantity by 1 on click. HINT: See the minus button. -->
+              <button>-</button>
 						</div>
 					</div>
 				</div>
@@ -51,32 +64,29 @@
 </template>
 
 <script>
+import Modal from "./Modal.vue";
+
 export default {
   name: "HelloWorld",
-  props: {
-    msg: String
+  components: {
+    Modal
   },
   data() {
     return {
-      quantity: 1,
-      price: 5.0,
-      activeImage: "art1"
+      itemName: "Title",
+      activeImage: "art1",
+      showModal: false
+      // Add 2 more: price and quantity
     };
   },
-  methods: {
-    changeImage(name) {
-      this.activeImage = name;
-    }
-  },
+  methods: {},
   computed: {}
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .prod-image {
   background-color: #eee;
-  /* padding-bottom: 100%; */
   width: 400px;
 }
 .prod-gallery {
@@ -94,8 +104,8 @@ export default {
   width: 100px;
 }
 .prod-gallery-image:hover {
-  outline-style: solid;
   outline-color: #fedc36;
+  outline-style: solid;
 }
 .prod-detail {
   display: flex;
