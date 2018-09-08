@@ -1,5 +1,7 @@
 # Thinc Open House Frontend Workshop
 
+View slides [Here !](https://hamzaabamboo.github.io/thinc-open-house/)
+
 - [Thinc Open House Frontend Workshop](#thinc-open-house-frontend-workshop)
     - [Why Vue ?](#why-vue)
     - [Setting it up](#setting-it-up)
