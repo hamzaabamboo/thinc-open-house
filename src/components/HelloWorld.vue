@@ -50,11 +50,8 @@
 						</div>
 						<div class="button-group col">
               <button @click="quantity -= 1">-</button>
-
-              <div class="text-display"><!-- Display Quantity Here --></div>
-
-              <!-- Make this button increase the quantity by 1 on click. HINT: See the minus button. -->
-              <button>-</button>
+              <div class="text-display">{{ quantity }}</div>
+              <button @click="quantity += 1">+</button>
 						</div>
 					</div>
 				</div>
@@ -75,8 +72,9 @@ export default {
     return {
       itemName: "Title",
       activeImage: "art1",
-      showModal: false
-      // Add 2 more: price and quantity
+      showModal: false,
+      quantity: 0
+      // Add price
     };
   },
   methods: {},
