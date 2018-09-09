@@ -180,7 +180,7 @@ data() {
 
 As you can see, the quantity is defined here, you can also add more variable too.
 
-Next we'll lokk at the part we show the quantity on the page.
+Next we'll look at the part we show the quantity on the page.
 
 ```html
 <div class="text-display">{{ quantity }}</div>
